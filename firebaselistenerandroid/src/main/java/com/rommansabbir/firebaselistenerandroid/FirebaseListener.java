@@ -12,12 +12,12 @@ import com.google.firebase.database.ValueEventListener;
 public class FirebaseListener {
     private Context context;
     private FirebaseDatabase firebaseDatabase;
-    private FirebaseListenerCallbackInterface callbackInterface;
+    private FirebaseListenerInterface listenerInterface;
 
     public FirebaseListener(Context context) {
         this.context = context;
         firebaseDatabase = FirebaseDatabase.getInstance();
-        callbackInterface = (FirebaseListenerCallbackInterface) context;
+        listenerInterface = (FirebaseListenerInterface) context;
     }
 
 
@@ -31,13 +31,13 @@ public class FirebaseListener {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
-                    callbackInterface.onFirebaseListenerSuccess(dataSnapshot);
+                    listenerInterface.onFirebaseListenerSuccess(dataSnapshot);
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                callbackInterface.onFirebaseListenerFailure(databaseError);
+                listenerInterface.onFirebaseListenerFailure(databaseError);
             }
         });
 
@@ -49,11 +49,11 @@ public class FirebaseListener {
      */
     public void destroyCallback(){
         firebaseDatabase = null;
-        callbackInterface = null;
+        listenerInterface = null;
         context = null;
     }
 
-    public interface FirebaseListenerCallbackInterface{
+    public interface FirebaseListenerInterface {
         void onFirebaseListenerSuccess(DataSnapshot dataSnapshot);
         void onFirebaseListenerFailure(DatabaseError databaseError);
     }
