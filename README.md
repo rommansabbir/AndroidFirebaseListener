@@ -28,7 +28,7 @@ Step 2. Add the dependency
 
 | Releases        
 | ------------- |
-| v.1.1         |
+| v1.1          |
 | v1.0          |
 
 
@@ -85,7 +85,7 @@ class MainActivity : AppCompatActivity(), FirebaseListenerKt.FirebaseListenerInt
         /**
          * Pass your db reference path to get data from FirebaseDatabase
          */
-        firebaseListenerKt.getData("devices")
+        firebaseListenerKt.getData("YOUR_DB_REF_PATH")
 
     }
 
