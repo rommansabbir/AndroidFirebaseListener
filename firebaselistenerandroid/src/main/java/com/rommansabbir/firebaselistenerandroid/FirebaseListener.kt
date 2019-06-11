@@ -6,7 +6,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.ValueEventListener
 
 
-class FirebaseListener{
+object FirebaseListener{
     /**
      * Get data from firebase
      * @param refPath
